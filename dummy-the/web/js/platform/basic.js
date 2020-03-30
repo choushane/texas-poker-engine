@@ -178,11 +178,12 @@ function signUp(callback) {
     var name = $('#name').val();
     var password = $('#reg_password').val();
     var passwordConfirm = $('#reg_confirm').val();
+/*
     if (isEmpty(phoneNumber) || isEmpty(password) || !validatePhoneNumber(phoneNumber)) {
         toastr.error('请输入正确的电话号码和密码');
         return;
     }
-
+*/
     if (isEmpty(name)) {
         toastr.error('请填写验证码');
         return;

@@ -11,9 +11,14 @@ var errorCode = new ErrorCode();
 exports.getGames = function (conditions, callback) {
     db.collection('game', function (err, gameCollection) {
         if (!err) {
+	    db.listCollections().toArray(function(err, collInfos) {
+		logger.info('aaa : ' + JSON.stringify(collInfos));
+	    });
+
             gameCollection.find(conditions).toArray(function (err, result) {
                 if (!err) {
                     logger.info("get game info by conditions: " + conditions.name + " successfully");
+		    logger.info(result);
                     callback(errorCode.SUCCESS, result);
                 } else {
                     logger.error("get game info by conditions: " + conditions.name + " failed: " + err);

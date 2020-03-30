@@ -40,7 +40,12 @@ exports.createBoardWorkUnit = function (creatorPhoneNumber, gameName, callback) 
             var creatorRealName = players[0].studentName;
             logger.info('creator phoneNumber = ' + creatorPhoneNumber);
             logger.info('creator name = ' + creatorName);
+            logger.info('gameName = ' + gameName);
             gameDao.getGames({name: gameName}, function (getGameErr, games) {
+		logger.info('games.length : ' + games.length + ' getGameErr.code : ' + getGameErr.code);
+		if(games !== null){
+		    logger.info('games not null [' + games.name + ']');
+		}
                 if (getGameErr.code === errorCode.SUCCESS.code && games !== null && games.length > 0) {
                     var getBoardConditions = {
                         creator: creatorPhoneNumber,
@@ -93,7 +98,7 @@ exports.createBoardWorkUnit = function (creatorPhoneNumber, gameName, callback) 
                         }
                     });
                 } else { // get game failed
-                    logger.info('get game failed');
+                    logger.info('get game failed.');
                     callback(errorCode.FAILED, null);
                 }
             });

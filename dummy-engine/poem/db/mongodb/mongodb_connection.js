@@ -19,6 +19,7 @@ exports.setMongoDBParameter = function(dbHost, dbName, dbUser, dbPassword) {
         dbURI += "@";
     }
     dbURI += dbHost + "/" + dbName;
+    logger.info(dbURI);    
     mongoose.connect(dbURI);
     exports.mongoDB = mongoose.Schema;
 };

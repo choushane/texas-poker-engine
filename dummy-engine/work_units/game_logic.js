@@ -57,7 +57,7 @@ exports.initDummiesWorkUnit = function (count, callback) {
                 });
             });
         } else {
-            logger.info('get game failed.');
+            logger.info('get game failed..');
             callback(errorCode.FAILED, null);
         }
     });
